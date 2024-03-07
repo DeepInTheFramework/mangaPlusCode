@@ -16,7 +16,10 @@
     }
 
     .highlightList {
+        display: flex;
+        flex-direction: column;
         width: 100%;
+        gap: 10px;
     }
 
     .allMajButton {
@@ -43,30 +46,53 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        max-width: 40%; 
-        gap: 20px;
-    }
+        max-width: 80%; 
+        gap: 10px;
+        padding: 10px;
+        padding-top: 20px;
+        }
 
-    .highlightSummary {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+
 
     .coverAndNumber {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 20%;
+    }
+
+    .mangaCover {
+            margin-top: -13px;
     }
 
     .mangaNumber {
         display: flex;
         border-radius: 15px;
-        width: 30px;
-        height: 30px;
-        background-color: aliceblue;
+        width: 28px;
+        height: 28px;
+        background-color: black;
+        color: aliceblue;
         justify-content: center;
         align-items: center;
+        z-index: 5;
+    }
+
+    .highlightSummary {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        width: 60%;
+    }
+
+    .mangaName {
+        margin-top: 25px;
+        font-size: 16px;
+        line-height: 1.3rem;
+        color: aliceblue;
+    }
+
+    .showMoreButton {
+        padding-bottom: 100px;
     }

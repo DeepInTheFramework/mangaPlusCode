@@ -36,7 +36,7 @@ function MangaHighlights () {
                         {/* Affichage des informations du manga */}
                                 <div className='coverAndNumber'>
                                 <div className='mangaNumber'>{index+1}</div>        
-                                <img src={manga.cover} alt={manga.title} />      
+                                <img className='mangaCover' src={manga.cover} alt={manga.title} />      
                                 </div>
 
 
@@ -57,7 +57,7 @@ function MangaHighlights () {
 
 
         <div className='showMoreButton'>
-                        
+                        <button>AFFICHER TOUT</button>
         </div>
 
         </div>
