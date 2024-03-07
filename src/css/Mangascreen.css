@@ -285,13 +285,14 @@ h1 {
     display: flex;
     flex-direction: row;
     overflow-x: hidden;
-    gap : 1%;
+    gap : 15px;
     justify-content: left;
     align-items: center;
-    flex-shrink: 0; /* Désactive la réduction automatique des images */
+    flex-shrink: 1; /* Désactive la réduction automatique des images */
     height: 280px;
     position: relative;
-    width: 99%;
+    width: 97%;
+    margin-left: 25px;
 }
 
 
@@ -302,11 +303,12 @@ h1 {
     z-index: 5;
     position: absolute;
     width: 100px;
-    height: 70%;
-    right: 92.9%;
+    height: 65%;
+    right: 92.5%;
     background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
     transition: background-color 0.3s ease;
-    bottom: 1%;
+    top: 33.5%;
+    border-radius: 15px;
 
 }
 
@@ -326,10 +328,11 @@ h1 {
     z-index: 5;
     position: absolute;
     width: 100px;
-    height: 70%;
-    left: 92%;
+    height: 65%;
+    left: 92.2%;
     background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
-    bottom: 1%;
+    top: 33.5%;
+    border-radius: 15px;
 }
 
 .containerRight:hover {
@@ -342,7 +345,7 @@ h1 {
 }
 
 .arrow {
-    margin-top: 130px;
+    margin-top: 20px;
     width: 0;
     height: 0;
     border-top: 20px solid transparent; /* Taille de la flèche */
@@ -371,7 +374,7 @@ h1 {
 
 .mangaItemExceptMaj {
     display: flex;
-    max-width: 11.5%;
+    max-width: 11.45%;
     flex-shrink: 0; /* Évite que les éléments enfants ne rétrécissent */
     flex-direction: column;
     gap: 10px;
