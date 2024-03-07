@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+  }
+
+.entireScreen   {
+    padding: 10px;
+    padding-left: 0.05%;
+    padding-right: 0.05%;
+    width: 99.9%;
+    display: flex;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.425), #191919);
+}
+
+.bigTitleAndAllMajButton {
+    padding: 0;
+    margin-left: 22px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row ;
+    color: aliceblue;
+    justify-content: flex-start;
+    width: auto;
+}
+
+
+.bigTitle {
+    font-weight: 590;
+    font-size: 22px;
+}
+
+.allMajButton {
+    width: auto;
+    padding: 8px;
+    padding-left: 12px;
+    padding-right: 15px;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: yellow;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-left: auto;
+    cursor: pointer;
+    transition: border-radius 0.3s, padding-right 0.3s, text-align 0.3s; /* Durée de l'animation : 0.3s */
+}
+
+.allMajButton:hover {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-right: 25px;
+}
+
+.mangasFromMaj {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    gap : 0.6%;
+    justify-content: center;
+}
+
+.mangaItem {
+    display: flex;
+    max-width: 13.4%;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.mangasFromMaj img {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+}
+
+.nameAndTitle {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+    bottom: 94px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 1) 100%);
+    color: aliceblue;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    padding-top: 30px;
+    padding-left: 5%;
+    padding-right: 5%;
+    transition: padding-bottom 0.4s;
+    gap: 2.5px;
+}
+
+.mangaItem:hover .nameAndTitle {
+    padding-bottom: 30px;
+    color: yellow;
+}
+
+
+
+
+.mangaName {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.mangaName:hover {
+}
+
+.mangaAuthor {
+        font-size: 9px;
+        letter-spacing: .05rem;
+        font-weight: 300;
+        text-align: left;
+        text-transform: uppercase;
+        color: grey;
+}
+
+
+.infoContainer {
+    margin-top: -5px;
+    padding: 0;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.103));
+    gap: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: background-color 0.3s;
+}
+
+.infoContainer:hover {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(90, 1, 1, 0.7) 50%, rgba(48, 0, 0, 0.301) 100%);
+}
+
+.fineBar {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    width: 100%;
+    height: 1px;
+    margin-top: -15px;
+
+}
+
+.summary {
+    display: block;
+    width: 92%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.chapterTitle {
+    width: 100%;
+    height: 14px;
+    color: azure;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 11px;
+    color: grey;
+}
+
+
+.chapterNumberAndViews {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    color: azure;
+    flex-direction: row;
+    justify-content: space-between; /* Les éléments s'espacent automatiquement */
+    gap: 10px;
+}
+
+.chapterNumber {
+        display: inline-block;
+        font-size: 14px;
+        letter-spacing: .4px;
+        white-space: nowrap;
+        font-weight: 500;
+}
+
+.mangaViews {
+    display: flex;
+    font-family: Roboto, sans-serif;
+    font-size: 11px;
+    opacity: 0.6;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.mangaViews img{
+width: 15px;
+height: auto;
+margin-bottom: 0;
+}
+
+.mangaButtonContainer {
+display: flex;
+justify-content: center;
+gap: 5%;
+}
+
+.mangaButton {
+    width: 80px;
+    height: 22px;
+    border: none; /* Supprime la bordure */
+    border-radius: 5px;
+    cursor: pointer;
+    color: aliceblue;
+    letter-spacing: .05rem;
+    font-size: 12px;
+}
+
+
+
+.frenchButton {
+    background-color: #5d0914;
+    font-weight: bold;
+
+}
+
+.englishButton {
+    background-color: black;
+}
+
+.mangaButton:hover {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+
+
+.WSJCategory, .jumpPlusCategory, .othersCategory, .firstReadCategory {
+width: 100%;
+display: flex;
+flex-direction: column;
+margin: 0;
+padding: 0;
+position: relative;
+}
+
+.categoryitle {
+    display: flex;
+        background: linear-gradient(90deg,#5d0914,rgba(93,9,20,0));
+        padding: 25px 50px 25px 25px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        color: aliceblue;
+        width: 100%;
+}
+
+h1 {
+    display: block;
+    font-size: 1.3em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.mangasFromWSJ, .mangaFromJumpPlus, .mangaFromOthers, .mangaFromFirstRead {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+    gap : 1%;
+    justify-content: left;
+    align-items: center;
+    flex-shrink: 0; /* Désactive la réduction automatique des images */
+    height: 280px;
+    position: relative;
+    width: 99%;
+}
+
+
+.containerLeft {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 5;
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    right: 92.8%;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
+
+}
+
+.containerLeft:hover .left {
+    margin-left: 15px;
+    border-left: 20px solid yellow; /* Couleur de la flèche */
+}
+
+.containerRight {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 5;
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    left: 92%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
+}
+
+.containerRight:hover .right {
+    margin-left: 70px;
+    border-left: 20px solid yellow; /* Couleur de la flèche */
+}
+
+.arrow {
+    margin-top: 130px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent; /* Taille de la flèche */
+    border-bottom: 20px solid transparent; /* Taille de la flèche */
+    border-left: 20px solid #ffffff; /* Couleur de la flèche */
+    transition: border-left-color 0.3s ease, margin-left 0.3s ease, margin-right 0.3s ease;
+    }
+
+.arrow:hover {
+    border-left: 20px solid yellow; /* Couleur de la flèche */
+}
+
+.left {
+    transform: rotateY(-180deg);
+    margin-left: 30px;
+}
+
+
+.right {
+    margin-left: 50px;
+}
+
+
+
+
+
+.mangaItemExceptMaj {
+    display: flex;
+    max-width: 11.5%;
+    flex-shrink: 0; /* Évite que les éléments enfants ne rétrécissent */
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    overflow-x: auto;
+    transition: margin 0.3s ease;
+    position: relative;
+}
+
+
+.mangaItemExceptMaj:hover {
+    margin-bottom: 25px;
+    z-index: 2;
+}
+
+.mangaItemExceptMaj::after {
+    content: ""; /* Ajoute un pseudo-élément pour créer la couche noire */
+    position: absolute; /* Position absolue par rapport à l'élément parent */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Couleur noire transparente par défaut */
+    transition: background-color 0.3s ease; /* Transition pour une animation fluide */
+}
+
+.mangaItemExceptMaj:hover::after {
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur noire semi-transparente au survol */
+}
+
+.mangasFromWSJ img, .mangaFromJumpPlus img, .mangaFromOthers img, .mangaFromFirstRead img{
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0; /* Désactive la réduction automatique des images */
+    min-width: 0; /* Permet aux images de se réduire si nécessaire pour s'adapter au conteneur */
+}
+

@@ -1,0 +1,62 @@
+
+.Announcement {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+}
+
+.slider {
+    width: auto;
+    padding-top: 25px;
+    padding-bottom: 5px;
+    padding-left:1%;
+    padding-right: 1%;
+    display: flex;
+    gap: 1.1%;
+}
+
+.slider img {
+    width: 32.6%;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.slider :hover {
+        transform: scale(1.02);
+}
+
+.button {
+    display: flex;
+    width: 98%;
+    justify-content: flex-end;
+}
+
+.buttonContainer {
+    width: 4%;
+    height: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.realButton {
+    height: 12px;
+    background-color: yellow;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: width 0.3s, border-radius 0.3s; /* Ajout de la transition */
+}
+
+.activated {
+    width: 12px;
+}
+
+.desactivated {
+    width: 25px;
+}
+
