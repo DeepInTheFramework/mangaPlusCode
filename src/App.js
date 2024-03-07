@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import './css/App.css';
 import Annoucement from './Announcement';
 import MangaScreen from './MangaScreen';
+import MangaHighlights from './MangaHighlights';
 import logo from './img/header/logo.png';
 import creatorBanner from './img/creators-banner.jpg';
 
@@ -44,6 +45,7 @@ function App() {
         </div>
         <div className='rightContainer'>
           <img src={creatorBanner} alt='banner about creators' style={{ borderTopLeftRadius : '10px', borderBottomLeftRadius : '10px'}}/>
+          <MangaHighlights />
         </div>
       </div>
     </div>
