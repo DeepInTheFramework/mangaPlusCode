@@ -1,6 +1,7 @@
 import { Manga, getWSJ, getJumpPlus, getOthers, getFreeRead, arrayRandomize, WSJMangas, jumpPlusMangas, othersMangas, freeReadMangas, allMangas } from './Manga.js'; // Importation de la classe Manga et du tableau allMangas
 import React, { useRef, useState } from 'react';
 import './css/Mangahighlights.css'
+import flamme_icon from './img/flamme.svg'
 
 
 
@@ -19,7 +20,7 @@ function MangaHighlights () {
                 
             <div className='highlighttitle'>
 
-             <span>Populaires</span>
+             <span className='popularity'><img src={flamme_icon}/>Populaires</span>
 
             </div>
 
@@ -43,7 +44,7 @@ function MangaHighlights () {
                                 <div className='highlightSummary'>
                                 <span className='mangaName'>{manga.title}</span>
                                 <span className='mangaAuthor'>{manga.author}</span>
-                                {manga.views()}
+                                <span className='mangaViews' style ={{color :'white'}}><img src={flamme_icon}/>{manga.views().toString()}</span>
                                 </div>
 
 
@@ -57,7 +58,7 @@ function MangaHighlights () {
 
 
         <div className='showMoreButton'>
-                        <button>AFFICHER TOUT</button>
+                        <button>AFFICHER TOUT {'>'}</button>
         </div>
 
         </div>

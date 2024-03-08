@@ -30,6 +30,8 @@ body {
     font-size: 22px;
 }
 
+
+
 .allMajButton {
     width: auto;
     padding: 8px;
@@ -343,7 +345,6 @@ h1 {
 }
 
 .arrow {
-    margin-top: 20px;
     width: 0;
     height: 0;
     border-top: 20px solid transparent; /* Taille de la flèche */
