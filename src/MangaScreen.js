@@ -1,10 +1,10 @@
 import { Manga, getWSJ, getJumpPlus, getOthers, getFreeRead, arrayRandomize, WSJMangas, jumpPlusMangas, othersMangas, freeReadMangas, allMangas } from './Manga.js'; // Importation de la classe Manga et du tableau allMangas
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './css/Mangascreen.css'
 import arrowicon from './img/arrow.png'
 import views_icon from './img/eyes.svg'
 
-function MangasScreen () {
+function MangasScreen ( {sendRef}) {
     arrayRandomize()
     const newAllManga = allMangas.slice(0, 28);
     getWSJ()
@@ -19,6 +19,14 @@ function MangasScreen () {
     const galleryRef2 = useRef(null);
     const galleryRef3 = useRef(null);
     const galleryRef4 = useRef(null);
+
+    const targetDivRef = useRef(null);
+
+    useEffect(() => {
+        // Envoyer la référence de la div cible au parent
+        sendRef(targetDivRef);
+    }, [sendRef]);
+
 
     // Fonction pour faire défiler la galerie vers la droite
     const scrollRight = (galleryRef) => {
@@ -43,7 +51,7 @@ function MangasScreen () {
 
     return (
 
-        <div className='entireScreen'>
+        <div className='entireScreen' ref={targetDivRef}>
 
             <div className='maj'>
                 <div className='bigTitleAndAllMajButton'>
