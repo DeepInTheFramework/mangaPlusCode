@@ -89,6 +89,19 @@
     justify-content: center;
     align-items: center;
     width: 20%;
+
+    @media screen and (max-width : 1699px) {
+        width: 25%;
+    }
+
+    @media screen and (max-width : 1499px) {
+        width: 26%;
+    }
+
+    @media screen and (max-width : 1299px) {
+        width: 28%;
+    }
+
     }
 
     .mangaCover {
@@ -160,6 +173,9 @@
         padding-bottom: 15px;
         transition: all 0.3s ease;
         cursor: pointer;
+        @media screen and (max-width : 1299px) {
+            font-size: 12px;
+        }
         }
 
     .showMoreButton button:hover {
