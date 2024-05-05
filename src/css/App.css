@@ -95,6 +95,10 @@ body {
   padding-left: 10px;
   padding-right: 10px;
   
+  @media screen and (max-width : 420px) {
+    width: 30%;
+}
+
 }
 
 .logo img {
@@ -128,6 +132,10 @@ body {
     @media screen and (max-width: 1410px) {
       font-size: 13px;
     }
+
+    @media screen and (max-width : 420px) {
+     display: none;
+  }
     
 
   }
@@ -214,6 +222,11 @@ body {
   background-color: #19191936;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.438);
   transition: all 0.3s ease;
+
+  @media screen and (max-width : 420px) {
+    display: none;
+}
+
 }
 
 
@@ -224,7 +237,7 @@ body {
   outline: none; 
   transform: translateX(-40px); 
 
-  @media  screen and (max-width : 1024px) {
+  @media  (max-width : 1024px) {
     width: 330px;
 
   }
@@ -236,6 +249,11 @@ body {
   opacity: 0.5;
   right: 10%;
   top: 5px;
+
+  @media screen and (max-width : 420px) {
+    top: -10px;
+}
+
 }
 
 .body {

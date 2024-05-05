@@ -22,12 +22,21 @@ body {
     color: aliceblue;
     justify-content: flex-start;
     width: auto;
+
+    @media screen and (max-width : 420px) {
+        margin-left: 0;
+    }
+    
 }
 
 
 .bigTitle {
     font-weight: 590;
     font-size: 22px;
+
+    @media screen and (max-width : 420px) {
+        font-size: 16px;
+    }
 }
 
 
@@ -81,6 +90,8 @@ body {
     gap : 2%;
 }
 
+
+
 }
 
 .mangaItem {
@@ -108,6 +119,10 @@ body {
 
 @media screen and (max-width: 1380px) {
     max-width: 22%;
+}
+
+@media screen and (max-width : 420px) {
+    max-width: 160px;
 }
 
 }
@@ -304,6 +319,10 @@ position: relative;
         margin-bottom: 30px;
         color: aliceblue;
         width: 100%;
+
+        @media screen and (max-width : 1024px) {
+            padding-right: 0;
+         }
 }
 
 h1 {
@@ -329,6 +348,11 @@ h1 {
     position: relative;
     width: 97%;
     margin-left: 25px;
+
+    @media screen and (max-width : 1024px) {
+        margin-left: 0px;
+    }
+    
 }
 
 
@@ -345,6 +369,11 @@ h1 {
     transition: background-color 0.3s ease;
     top: 33.5%;
     border-radius: 15px;
+
+    @media screen and (max-width : 1024px) {
+        display: none;
+        
+    }
     
 
 }
@@ -372,6 +401,10 @@ h1 {
     top: 33.5%;
     border-radius: 15px; 
 
+    @media screen and (max-width : 1024px) {
+        display: none;
+        
+    }
 
 }
 
