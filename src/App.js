@@ -7,6 +7,7 @@ import logo from './img/header/logo.png';
 import creatorBanner from './img/creators-banner.jpg';
 import Footer from './Footer'
 import Socials from './Socials';
+import searchButton from './img/searchIcon.svg';
 
 
 function App() {
@@ -63,6 +64,14 @@ function App() {
                 yellowDiv.style.left = `${listeDesMangasRect.left-10}px`;
                 yellowDiv.style.width = `${listeDesMangasRect.width+20}px`;
                 break;  
+
+                case 'ranking' :
+                  const rankingDiv = document.querySelector('.ranking'); 
+                  const rankingRect = rankingDiv.getBoundingClientRect();
+                  yellowDiv.style.top = 0;
+                  yellowDiv.style.left = `${rankingRect.left-10}px`;
+                  yellowDiv.style.width = `${rankingRect.width+20}px`;
+                  break;  
 
             case 'creators' :
               const creatorsDiv = document.querySelector('.creators'); 
@@ -123,7 +132,12 @@ function App() {
                                                 onMouseLeave={() => YellowHighlightOnLeave()}
                 >EN VEDETTE</li>
 
-                
+
+                <li className='ranking'
+                                                onMouseEnter={()=> YellowHighlightOnEnter('ranking')}
+                                                onMouseLeave={() => YellowHighlightOnLeave()}
+                >RANKING</li>
+
                 <li className='listeDesMangas'
                                 onMouseEnter={()=> YellowHighlightOnEnter('listeDesMangas')}
                                 onMouseLeave={() => YellowHighlightOnLeave()}
@@ -151,6 +165,8 @@ function App() {
             <input type="text" 
               placeholder='Recherche par titre ou par auteur'
             />
+              <img className='iconSearch' src={searchButton}/>
+
           </div>
 
           <div className='redHightlight'></div>

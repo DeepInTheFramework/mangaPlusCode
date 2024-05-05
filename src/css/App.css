@@ -9,6 +9,13 @@
   pointer-events: none;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif; /* Utilisation de Roboto comme police principale */
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -16,7 +23,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #282c342a;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,6 +31,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
 }
 
 .App-link {
@@ -39,18 +47,45 @@
   }
 }
 
+@keyframes scrollBackground {
+  0% {
+    background-position: 100% 0; /* Position de départ */
+  }
+
+  50% {
+    background-position: 50% 0; /* Position intermédiaire */
+  }
+
+  100% {
+    background-position: 0 0; /* Position finale (identique à la position de départ pour boucler) */
+  }
+}
+
 .header {
   position: relative;
-  background-color: #44567a54;
   padding: 5px;
+  padding-left: 0;
   padding-top: 9px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 80px;
   overflow: hidden;
-  gap: 50px;
+  gap: 0;
+  z-index: 1;
+  background-image: url('../img/header_for_animation.png');
+  background-attachment: scroll, local;
+  background-repeat: repeat;
+  background-color: #02050c80;
+  background-blend-mode: overlay; /* Mélange le fond avec la couleur */
+  animation: scrollBackground 5s linear infinite;
+}
+
+.header::before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
   z-index: 1;
 }
 
@@ -59,6 +94,7 @@
   cursor: pointer;
   padding-left: 10px;
   padding-right: 10px;
+  
 }
 
 .logo img {
@@ -67,24 +103,28 @@
 }
 
 .menu {
-  margin-left: 35px;
+  margin-left: 0px;
   width: 60%;
   height: 100%;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .menu ul{
     width: 100%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: aliceblue;
-    font-size: 15px;
+    font-family: 'Roboto', sans-serif; /* Utilisation de Roboto comme police principale */
+    color: rgb(223, 223, 223);
+    font-size: 13.5px;
+    font-weight: 500;
     display: flex;
     flex-direction: row;
-    gap: 60px;
-    overflow-x: hidden;
+    gap: 45px;
     align-content: flex-start;
     justify-content: flex-start;
     margin-top: -7px;
+    text-transform: uppercase;
+    letter-spacing: .15rem;
     @media screen and (max-width: 1410px) {
       font-size: 13px;
     }
@@ -108,10 +148,32 @@
     padding-top: 37px;
   }
 
-  .hideOnSmallScreen {
-    @media screen and (max-width: 1310px) {
+
+  .ranking {
+    @media screen and (max-width: 1100px) {
+      display: none;
+    }
+  }
+
+  .creators {
+    @media screen and (max-width: 1100px) {
+      display: none;
+    }
+  }
+
+  .favoris {
+    @media screen and (max-width: 1300px) {
+      display: none;
+    }
+  }
+
+
+  .aProposDeNous {
+    @media screen and (max-width: 1670px) {
     display: none;
   }
+
+  
 }
 
 
@@ -136,8 +198,11 @@
 }
 
 .searchBar {
-  width: 20%;
+  margin-left: auto;
+  position: relative;
+  width: auto;
   height: auto;
+  margin-right: 1%;
 }
 
 .searchBar input[type=text]
@@ -145,11 +210,33 @@
   font-size: 16px;
   border: 0px;
   height: 30px;
-  width: 80%;
+  width: 300px;
   background-color: #19191936;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.438);
+  transition: all 0.3s ease;
 }
 
+
+.searchBar input[type=text]:focus {
+  border: 0px;
+  border-bottom: 2px solid red; /* Changer la couleur de la bordure */
+  width: 460px;
+  outline: none; 
+  transform: translateX(-40px); 
+
+  @media  screen and (max-width : 1024px) {
+    width: 330px;
+
+  }
+}
+
+.iconSearch {
+  position: absolute;
+  width: 20px;
+  opacity: 0.5;
+  right: 10%;
+  top: 5px;
+}
 
 .body {
   display: flex;

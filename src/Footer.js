@@ -44,8 +44,8 @@ export default function Footer ({scrollToTarget}) {
                         <div className='quoteAndButton'>
                             <span>Téléchargez l'application et lisez à tout moment !</span>
                             <div className='buttonOfDownload'>
-                            <img src={iconApple} style={{cursor: 'pointer'}}/>
-                            <img className='iconGoogle' src={iconGoogle}  style={{cursor: 'pointer'}}/>
+                            <img className='iconDownload' src={iconApple} style={{cursor: 'pointer'}}/>
+                            <img className='iconGoogle iconDownload' src={iconGoogle}  style={{cursor: 'pointer'}}/>
                             </div>
 
 
