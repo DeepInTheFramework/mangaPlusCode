@@ -38,10 +38,15 @@
 
     @media (max-width : 1024px) {
 
-        width: 50%;
+        width: 22%;
         padding: 0;
     }
 
+    @media (max-width : 728px) {
+
+        width: 50%;
+        padding: 0;
+    }
 }
 
 .iconAndCopyright img {
@@ -107,7 +112,6 @@
 }
 
 .footerList .conditions {
-    display: block;
     @media screen and (max-width : 420px) {
         display: none;
     }
@@ -193,7 +197,7 @@
     padding-right: 40px;
     
     @media (max-width : 1024px) {
-        font-size: 12px;
+        font-size: 10px;
         padding-right: 0;
     }
 
@@ -271,6 +275,7 @@
         top: -40px;
         max-height: 80px;
      }
+
 
 }
 

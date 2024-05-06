@@ -80,6 +80,12 @@ body {
   background-color: #02050c80;
   background-blend-mode: overlay; /* Mélange le fond avec la couleur */
   animation: scrollBackground 5s linear infinite;
+
+  
+  @media screen and (max-width : 420px) {
+    justify-content: center;
+ }
+
 }
 
 .header::before {
@@ -89,17 +95,55 @@ body {
   z-index: 1;
 }
 
+.menu-mobile {
+  display: none;
+
+  @media screen and (max-width : 420px) {
+    position: absolute;
+    left: 5%;
+    display: block;
+}
+}
+
+.menu-mobile {
+  width: 22px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.menu-mobile span {
+    content: '';
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 30%, rgba(0, 0, 0, 0));
+    transition: transform 0.2s ease;
+}
+
+
+.menu-icon div {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
 .logo {
   width: 10%;
   cursor: pointer;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   
   @media screen and (max-width : 420px) {
-    width: 30%;
+    width: 33%;
+    margin-left: 100px;
 }
 
 }
+
 
 .logo img {
   width: 90%;
@@ -113,6 +157,10 @@ body {
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
+  
+  @media screen and (max-width : 420px) {
+    display: none;
+ }
 }
 
 .menu ul{
@@ -133,9 +181,6 @@ body {
       font-size: 13px;
     }
 
-    @media screen and (max-width : 420px) {
-     display: none;
-  }
     
 
   }
@@ -211,6 +256,11 @@ body {
   width: auto;
   height: auto;
   margin-right: 1%;
+
+  @media screen and (max-width : 420px) {
+    width: 50px;
+    height: 30px;
+}
 }
 
 .searchBar input[type=text]
@@ -251,7 +301,7 @@ body {
   top: 5px;
 
   @media screen and (max-width : 420px) {
-    top: -10px;
+    right: 20%;
 }
 
 }

@@ -117,6 +117,11 @@ function App() {
     <div className="App">
       
       <header className="header">
+      <div class="menu-mobile">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
           <div className='logo'>
               <img src={logo}  alt='logo de Manga Plus'/>
           </div>
