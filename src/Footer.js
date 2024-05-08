@@ -13,7 +13,6 @@ export default function Footer ({scrollToTarget}) {
     return (
                 <div className='footerContainer'>
 
-                    <div class="menu-mobile"></div>
                     <div className='iconAndCopyright'>
                         <div className='footerIcon'>
                             <img src={logo} />

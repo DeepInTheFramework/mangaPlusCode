@@ -177,10 +177,33 @@
         padding-bottom: 15px;
         transition: all 0.3s ease;
         cursor: pointer;
+
         @media screen and (max-width : 1299px) {
             font-size: 12px;
         }
+
+        @media screen and (max-width : 1199px) {
+            padding: 90px;
+            padding-top: 15px;
+            padding-bottom: 15px;
         }
+
+        @media screen and (max-width : 1024px) {
+            padding: 60px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        @media screen and (max-width : 800px) {
+            font-size: 11px;
+            padding: 50px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        }
+
+
 
     .showMoreButton button:hover {
         padding-left: 130px;
@@ -188,4 +211,21 @@
         color: yellow;
         border-color: yellow;
         font-weight: 700;
+
+        @media screen and (max-width : 1199px) {
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+        @media screen and (max-width : 1024px) {
+            padding-left: 70px;
+            padding-right: 70px;
+        }
+
+        @media screen and (max-width : 800px) {
+            padding-left: 60px;
+            padding-right: 60px;
+        }
     }
+
+    

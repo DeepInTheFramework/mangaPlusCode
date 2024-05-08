@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import './css/App.css';
 import Annoucement from './Announcement';
 import MangaScreen from './MangaScreen';
@@ -13,6 +13,8 @@ import searchButton from './img/searchIcon.svg';
 function App() {
 
   const targetDivRef = useRef(null);
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Récupérer l'élément avec la référence siteStart
@@ -34,6 +36,16 @@ function App() {
     } 
 };
   
+
+      function openMobileMenu() {
+          setIsMobileMenuOpen(true);
+      }
+
+
+      function closeMobileMenu() {
+        setIsMobileMenuOpen(false);
+      }
+
       function YellowHighlightOnEnter(divName) {
             const yellowDiv = document.getElementById('yellowHightlightID')
             console.log (yellowDiv)
@@ -116,12 +128,85 @@ function App() {
    
     <div className="App">
       
+      <div className="menu-mobile" 
+      style={{ display: isMobileMenuOpen ? 'block' : 'none' }}>
+
+
+
+              <div className='headerOfMobileMenu'>
+               
+
+                <div class="menu-mobile-language">
+                  <div className='menu-mobile-language-left-part'>
+
+                    <div class="menu-mobile-close-icon "
+                        onClick={() => closeMobileMenu()}
+                        >
+                          <span className='barLeft'></span>
+                          <span className='barRight'></span>
+                    </div>
+
+                        <p>LANGUE :</p>
+
+                  </div>
+
+                  <div className='menu-mobile-language-right-part'>
+                      <p>Français</p>
+                      <span></span>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <ul className='menuListOnMobile' style={{ listStyleType: 'none' }}>
+                <li className='recentMobile'
+                >RÉCENT</li>
+                <li className='enVedetteMobile'
+                >EN VEDETTE</li>
+
+
+                <li className='rankingMobile'
+                 >RANKING</li>
+
+                <li className='listeDesMangasMobile'
+                >LISTE DES MANGAS</li>
+
+                <li className='creatorsMobile' 
+                >
+                  
+                  CREATORS
+                </li>
+                <li className='favorisMobile'            
+                >FAVORIS</li>
+
+                <li className='aProposDeNousMobile' 
+                >À PROPOS DE NOUS</li>
+              </ul>
+
+              <div className='footerInMobileMenu'>
+              <ul className='footerListOnMobile' style={{ listStyleType: 'none' }}>
+                            <li className='aideMobile'>Aide / FAQ</li>
+                            <li className='actualitesMobile'>Actualités et Événements</li>
+                            <li className='suggestionsMobile'>Suggestions</li>
+                            <li className='conditionsMobile'>Conditions d'Utilisation</li>
+                            <li className='evaluationsMobile'>Évaluations</li>
+                            <li className='copyrightMobile'>Copyright</li>
+                        </ul>
+              </div>
+      </div>
+
+
       <header className="header">
-      <div class="menu-mobile">
+      <div class="menu-mobile-icon" onClick={() => openMobileMenu()}>
         <span></span>
         <span></span>
         <span></span>
       </div>
+
+
+      
+
           <div className='logo'>
               <img src={logo}  alt='logo de Manga Plus'/>
           </div>
