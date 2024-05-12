@@ -19,7 +19,7 @@ export default function Footer ({scrollToTarget}) {
                         </div>
 
                         <div className='footerCopyright'>
-                        <span className='copyrightText'>Cloner par Louis-Emmanuel Metan. <br/> Front-end Developper</span>
+                        <span className='copyrightText'>Cloner par <a href="https://www.linkedin.com/in/louis-emmanuel-metan-86b3b4268/" className="customLink">Louis-Emmanuel Metan</a>. <br/> Front-end Developper</span>
                         </div>
                     </div>
 

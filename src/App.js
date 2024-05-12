@@ -37,21 +37,33 @@ function App() {
 };
   
 
-      function openMobileMenu() {
+      function openMobileMenu() { //Ouvre le menu mobile
           setIsMobileMenuOpen(true);
       }
 
 
-      function closeMobileMenu() {
+      function closeMobileMenu() { //Ferme le menu mobile
         setIsMobileMenuOpen(false);
       }
 
-      function YellowHighlightOnEnter(divName) {
-            const yellowDiv = document.getElementById('yellowHightlightID')
-            console.log (yellowDiv)
+
+
+      
+
+      function YellowHighlightOnEnter(divName) { 
+          /* Cette fonction permet de faire afficher une border top jaune au dessus de l'élement menu survolé */
+
+        const yellowDiv = document.getElementById('yellowHightlightID')
+        console.log (yellowDiv)
+
+
+        /* Selon l'élément survolé (passé en argument), on éffectue différentes opérations
+            1/ On récupère la div de l'élément
+            2/On récupère ces coordonnées et sa taille.
+            3/ On va ensuite modifié les attributs de la yellowDiv (Bar Jaune), pour apparaître plus grande que l'élément.
+            */
+
         switch (divName) {
-
-
           case 'recent' :
             const recentDiv = document.querySelector('.recent'); 
             const recentRect = recentDiv.getBoundingClientRect();
@@ -115,10 +127,11 @@ function App() {
       }
 
       function YellowHighlightOnLeave() {
+
+        // Fonction qui remet la barre jaune en dehors de l'écran dès qu'aucun element du menu n'est survolé 
         const yellowDiv= document.getElementById('yellowHightlightID')
           yellowDiv.style.top = '-5px';
           yellowDiv.style.width = '10px';
-
   }
 
         
@@ -270,7 +283,7 @@ function App() {
         </div>
         <div className='rightContainer'>
           <Socials />
-          <img src={creatorBanner} alt='banner about creators' style={{ borderTopLeftRadius : '10px', borderBottomLeftRadius : '10px'}}/>
+          <img src={creatorBanner} alt='banner about creators' style={{ borderTopLeftRadius : '10px', borderBottomLeftRadius : '10px', cursor: 'pointer'}}/>
           <MangaHighlights />
         </div>
       </div>

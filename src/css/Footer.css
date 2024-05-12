@@ -43,11 +43,20 @@
         padding: 0;
     }
 
-    @media (max-width : 728px) {
+    @media screen and (min-width: 401px) and (max-width: 768px) {
 
-        width: 50%;
+        width: 40%;
         padding: 0;
+        margin-bottom: 30px;
     }
+
+    @media screen and (max-width: 401px) {
+
+        width: 60%;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+
 }
 
 .iconAndCopyright img {
@@ -59,6 +68,16 @@
     width: 100%;
     font-size: 11px;
     color: azure;
+
+    @media screen and (min-width: 401px) and (max-width: 768px) {
+        font-size: 13px;
+    }
+
+    
+    @media screen and (max-width: 401px) {
+        font-size: 14px;
+
+    }
 }
 
 .footerMenuContainer {
