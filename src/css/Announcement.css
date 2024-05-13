@@ -21,10 +21,27 @@
     border-radius: 20px;
     cursor: pointer;
 
-    @media screen and (max-width : 420px) {
-        width: 360px;
+    @media screen and (max-width: 1919px) {
+        width: 46.4%;
         height: auto;
-        padding-left: 12px;
+        margin-left: 2%;
+    }
+
+
+    @media screen and (max-width: 1300px) {
+        width: 96%;
+        height: auto;
+        margin-left: 2%;
+    }
+
+    
+
+
+}
+
+.slider img.lastSlide {
+    @media screen and (max-width: 1300px) {
+        margin-right: 2%;
     }
 }
 
@@ -34,8 +51,12 @@
 
 .button {
     display: flex;
-    width: 98%;
+    width: 99.9%;
     justify-content: flex-end;
+
+    @media screen and (max-width: 1919px) {
+        justify-content: center;
+    }
 }
 
 .buttonContainer {
@@ -48,6 +69,14 @@
     gap: 10px;
     background-color: black;
     border-radius: 10px;
+
+    @media screen and (min-width : 1600px) and (max-width: 1919px) {
+        width: 120px;
+    }
+
+    @media screen and (max-width: 1300px) {
+        width: 150px;
+    }
 }
 
 .realButton {
@@ -58,11 +87,11 @@
     transition: width 0.3s, border-radius 0.3s; /* Ajout de la transition */
 }
 
-.activated {
+.desactivated {
     width: 12px;
 }
 
-.desactivated {
+.activated {
     width: 25px;
 }
 

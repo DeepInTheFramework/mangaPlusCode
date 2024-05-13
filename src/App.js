@@ -210,7 +210,7 @@ function App() {
       </div>
 
 
-      <header className="header">
+      <header className="header" id='siteStart'>
       <div class="menu-mobile-icon" onClick={() => openMobileMenu()}>
         <span></span>
         <span></span>
@@ -220,11 +220,11 @@ function App() {
 
       
 
-          <div className='logo'>
+          <div className='logo' >
               <img src={logo}  alt='logo de Manga Plus'/>
           </div>
 
-          <div className='menu' id='siteStart'>
+          <div className='menu' >
               <ul  style={{ listStyleType: 'none' }}>
                 <li className='recent'
                 onMouseEnter={ ()=> YellowHighlightOnEnter('recent')}
