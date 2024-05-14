@@ -5,6 +5,7 @@ import slide2 from './img/announcement/a2.jpg';
 import slide3 from './img/announcement/a3.jpg';
 import slide4 from './img/announcement/a4.jpg';
 import slide5 from './img/announcement/a5.jpg';
+import { hover } from '@testing-library/user-event/dist/hover';
 
 function Annoucement () {
     const [currentSlideNumber, setCurrentSlideNumber] = useState (1)
@@ -14,21 +15,70 @@ function Annoucement () {
     const [slide4ActivatedStatus, setSlide4ActivatedStatus] = useState(false)
     const [slide5ActivatedStatus, setSlide5ActivatedStatus] = useState(false)
     const [currentSlideSens, setCurrentSlideSens] = useState('right')
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [hoverSlide, setHoverSlide] = useState(false)
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+  
+    window.addEventListener('resize', handleResize);
+    
+    useEffect (() => {
+        if (hoverSlide) {console.log("hovering")}
+        else {console.log("not hovering")}
+    }, [hoverSlide] )
 
 
     useEffect(() => {
-      if (currentSlideNumber >= 5)
-        {
-          setCurrentSlideSens('left')
-        }
+          switch (true) {
+            case windowWidth <= 1200 :
+              if (currentSlideNumber >= 5)
+                {
+                  console.log("La taille de l'écran est :", windowWidth, "et currentSlideNumber est :", currentSlideNumber, "on met donc le sens pour repartir a gauche")
+                  setCurrentSlideSens('left')
+                }
+        
+                else if (currentSlideNumber <= 1) {
+                  setCurrentSlideSens('right')
+                  console.log("La taille de l'écran est :", windowWidth, "et currentSlideNumber est :", currentSlideNumber, "on met donc le sens pour repartir a droite")
+                }
+                break;
+          
 
-        else {
-          setCurrentSlideSens('right')
-        }
+            case windowWidth < 1920 && windowWidth > 1200:
+                  if (currentSlideNumber >= 3)
+                    {
+                      setCurrentSlideSens('left')
+                      console.log("La taille de l'écran est :", windowWidth, "et currentSlideNumber est :", currentSlideNumber, "on met donc le sens pour repartir a gauche")
+                    }
+            
+                    else if (currentSlideNumber <= 1)  {
+                      setCurrentSlideSens('right')
+                      console.log("La taille de l'écran est :", windowWidth, "et currentSlideNumber est :", currentSlideNumber, "on met donc le sens pour repartir a droite")
+                    }
+                    break;
+            
+                    case windowWidth >= 1920 :
+                      if (currentSlideNumber >= 2)
+                        {
+                          setCurrentSlideSens('left')
+                          console.log("La taille de l'écran est :", windowWidth, "et currentSlideNumber est :", currentSlideNumber, "on met donc le sens pour repartir a gauche")
+                        }
+                
+                        else if (currentSlideNumber <= 1)  {
+                          setCurrentSlideSens('right')
+                          console.log("La taille de l'écran est :", windowWidth, "et currentSlideNumber est :", currentSlideNumber, "on met donc le sens pour repartir a droite")
+                        }
+                        break;        
+              }
+        
     }, [currentSlideNumber]);
 
 
     useEffect(() => {
+
+      if (!hoverSlide) {
       console.log("------------------- USE EFFECT -------------------")
       console.log("On est dans le useEffect et currentSlideNumber est : ", currentSlideNumber)
 
@@ -38,12 +88,13 @@ function Annoucement () {
 
         else {scrollSlider(currentSlideNumber+1)}
 
-      }, 7000); // Mettre à jour toutes les 3 secondes
+      }, 3000); // Mettre à jour toutes les 3 secondes
       // Nettoyer l'intervalle lors du démontage du composant
       return () => {
         clearInterval(intervalId);
-      };
-    }, [currentSlideNumber]); // Le tableau vide [] signifie que ce useEffect s'exécute uniquement une fois après le montage initial du composant
+      };}
+
+    }, [currentSlideNumber, hoverSlide]); // Le tableau vide [] signifie que ce useEffect s'exécute uniquement une fois après le montage initial du composant
 
 
 
@@ -99,12 +150,7 @@ function Annoucement () {
     const screenWidth = window.innerWidth;
     let valueOfScroll = 0;
 
-    if(numberOfButton === 4 && window.innerWidth > 1100) {
-      numberOfButton =2;
-    }
 
-    const divNumberDifference = currentSlideNumber - numberOfButton;
-    console.log('Je fais la différence entre currentSlideNumber :', currentSlideNumber, " et numberOfButton : ", numberOfButton);
 
     switch (true) {
 
@@ -130,6 +176,21 @@ function Annoucement () {
 
    // console.log('LA VALUE DE INNERWIDTH EST :', screenWidth)
   //  console.log('LA VALUE DE SCROLL SERA :', valueOfScroll)
+
+  if(windowWidth <= 1200)
+    {
+      if (numberOfButton===6) {numberOfButton=4}
+    }
+  else if (windowWidth < 1920) 
+    {if (numberOfButton===4) {numberOfButton=2}}
+
+  else {
+    if (numberOfButton===3) {numberOfButton=1}
+  }
+
+  if (numberOfButton===0) {numberOfButton=2}
+  const divNumberDifference = currentSlideNumber - numberOfButton;
+  console.log('Je fais la différence entre currentSlideNumber :', currentSlideNumber, " et numberOfButton : ", numberOfButton);
 
      if(divNumberDifference > 0) //La slide souhaitée est à gauche de la slide actuel. On slide donc à gauche
       {
@@ -168,6 +229,7 @@ return (
         display: 'flex',
         overflowX: 'hidden',
       }}
+      onMouseEnter={() => setHoverSlide(true)} onMouseLeave={() => setHoverSlide(false)}
     >
       {/* Images du slider*/}
       <img src={slide1} alt="Image 1" />
@@ -176,28 +238,29 @@ return (
       <img src={slide4} alt="Image 1" />
       <img className='lastSlide' src={slide5} alt="Slide 5" />
       {/* Fin des images */}
+      
     </div>
     
-    <div className='button'>
-    <div className='buttonContainer'>
+    <div className='button' >
+    <div className='buttonContainer' onMouseEnter={() => setHoverSlide(true)} onMouseLeave={() => setHoverSlide(false)}>
       <div id='sliderButton1' className={ slide1ActivatedStatus ? 'realButton activated' : "realButton desactivated" } onClick={() => scrollSlider(1)}></div>
      
      
       <div  id='sliderButton2' 
-      style ={{display : window.innerWidth <= 1320 ? 'block' : 'none'}}
       className={ slide2ActivatedStatus ? 'realButton activated' : "realButton desactivated" } onClick={() => scrollSlider(2)}></div>
       
       <div id='sliderButton3' 
       
       className={ slide3ActivatedStatus ? 'realButton activated' : "realButton desactivated" }
-      style ={{display : window.innerWidth <= 1320 ? 'block' : 'none'}} onClick={() => scrollSlider(3)}></div>
+      style ={{display : windowWidth <= 1919 ? 'block' : 'none'}} onClick={() => scrollSlider(3)}></div>
      
       <div  id='sliderButton4' 
       className={ slide4ActivatedStatus ? 'realButton activated' : "realButton desactivated" }
-      style ={{display : window.innerWidth <= 1919 ? 'block' : 'none'}}
+      style ={{display : windowWidth <= 1200 ? 'block' : 'none'}}
       onClick={() => scrollSlider(4)}></div>
 
-      <div id='sliderButton5' 
+      <div id='sliderButton5'
+            style ={{display : windowWidth <= 1200 ? 'block' : 'none'}} 
       className={ slide5ActivatedStatus ? 'realButton activated' : "realButton desactivated" } onClick={() => scrollSlider(5)}></div>
   
     </div>

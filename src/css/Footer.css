@@ -57,6 +57,12 @@
         margin-bottom: 30px;
     }
 
+    @media screen and (max-width: 360px) {
+
+        width: 70%;
+        padding: 0;
+        margin-bottom: 30px;
+    }
 }
 
 .iconAndCopyright img {
