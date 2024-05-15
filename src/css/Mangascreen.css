@@ -22,22 +22,12 @@ body {
     color: aliceblue;
     justify-content: flex-start;
     width: auto;
-
-    @media screen and (max-width : 500px) {
-        margin-left: 0;
-    }
-    
 }
 
 
 .bigTitle {
     font-weight: 590;
     font-size: 22px;
-
-    @media screen and (max-width : 500px) {
-        padding-top: 6px;
-        font-size: 14px;
-    }
 }
 
 
@@ -74,25 +64,6 @@ body {
     overflow: auto;
     gap : 0.6%;
     justify-content: center;
-
-    @media screen and (max-width: 1601px) {
-        gap : 0.8%;
-   }
-
-   @media screen and (max-width: 1501px) {
-    gap : 1%;
-}
-
-  @media screen and (max-width: 1430px) {
-    gap : 1.3%;
-}
-
-@media screen and (max-width: 1360px) {
-    gap : 2%;
-}
-
-
-
 }
 
 .mangaItem {
@@ -103,29 +74,6 @@ body {
     cursor: pointer;
     position: relative;
     margin-bottom: 10px;
-
-    @media screen and (max-width: 1601px) {
-         max-width: 175px;
-    }
-
-    @media screen and (max-width: 1500px) {
-        gap: 10px;
-        max-width: 230px;
-   }
-
-   @media screen and (max-width: 1430px) {
-    gap: 10px;
-    max-width: 220px;
-}
-
-@media screen and (max-width: 1380px) {
-    max-width: 22%;
-}
-
-@media screen and (max-width : 500px) {
-    max-width: 170px;
-}
-
 }
 
 .mangasFromMaj img {
@@ -320,10 +268,6 @@ position: relative;
         margin-bottom: 30px;
         color: aliceblue;
         width: 100%;
-
-        @media screen and (max-width : 1024px) {
-            padding-right: 0;
-         }
 }
 
 h1 {
@@ -349,10 +293,6 @@ h1 {
     position: relative;
     width: 97%;
     margin-left: 25px;
-
-    @media screen and (max-width : 1024px) {
-        margin-left: 0px;
-    }
     
 }
 
@@ -369,13 +309,7 @@ h1 {
     background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
     transition: background-color 0.3s ease;
     top: 33.5%;
-    border-radius: 15px;
-
-    @media screen and (max-width : 1024px) {
-        display: none;
-        
-    }
-    
+    border-radius: 15px;  
 
 }
 
@@ -401,12 +335,6 @@ h1 {
     background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
     top: 33.5%;
     border-radius: 15px; 
-
-    @media screen and (max-width : 1024px) {
-        display: none;
-        
-    }
-
 }
 
 .containerRight:hover {
@@ -487,3 +415,69 @@ h1 {
     min-width: 0; /* Permet aux images de se réduire si nécessaire pour s'adapter au conteneur */
 }
 
+
+@media screen and (max-width:1600px) {
+
+    .mangasFromMaj {
+            gap : 0.8%;
+    }
+
+    .mangaItem {
+    
+            max-width: 23%;
+        }
+    
+}
+
+@media screen and (max-width:1200px) {
+    .mangaItem {
+    
+            max-width: 28%;
+        }
+    
+        .mangasFromMaj {
+            gap : 1.3%;
+    }
+}
+
+@media  screen and (max-width:1024px) {
+
+    .mangasFromWSJ, .mangaFromJumpPlus, .mangaFromOthers, .mangaFromFirstRead {
+
+            margin-left: 0px;
+        
+    }
+
+    .containerLeft {
+            display: none;       
+    
+    }
+
+    .categoryitle {
+
+                padding-right: 0;
+   }
+
+    .containerRight {
+            display: none;
+    }
+    
+}
+
+@media screen and (max-width:500px) {
+
+    .bigTitleAndAllMajButton {
+            margin-left: 0;
+    }
+    
+    
+    .bigTitle {
+            padding-top: 6px;
+            font-size: 14px;
+    }
+
+    .mangaItem {
+        max-width: 170px;    
+    }
+    
+}
