@@ -4,31 +4,77 @@ import './css/Mangascreen.css'
 import arrowicon from './img/arrow.png'
 import views_icon from './img/eyes.svg'
 
+/**
+ * The MangaScreen component is used to render all the manga coming from the constructor
+ */
+
 function MangasScreen ( {sendRef}) {
+
+    //Importing different function from the Manga constructor
     arrayRandomize()
     const newAllManga = allMangas.slice(0, 28);
     getWSJ()
     getJumpPlus()
     getOthers()
     getFreeRead()
-    console.log(allMangas)
-    console.log(newAllManga)
 
-
+    //Initializing the ref for the div the user can swipe on mobile
     const galleryRef1 = useRef(null);
     const galleryRef2 = useRef(null);
     const galleryRef3 = useRef(null);
     const galleryRef4 = useRef(null);
 
+
+    const [startX, setStartX] = useState(null); //useState that save the starting point of the user swipe 
+
+    const [dataScrollLeft, setDataScrollLeft] = useState([null, null, null, null]); //useState that save the current position of each swipable div
+
+    const galleryRefTab = [galleryRef1, galleryRef2, galleryRef3, galleryRef4]; //Array of the div ref
+
     const targetDivRef = useRef(null);
 
     useEffect(() => {
-        // Envoyer la référence de la div cible au parent
         sendRef(targetDivRef);
     }, [sendRef]);
 
+    
+    const handleTouchStart = (event, index) => {
+        setStartX(event.touches[0].clientX);
+    };
 
-    // Fonction pour faire défiler la galerie vers la droite
+    const handleTouchMove = (event, index) => {
+        /*This function handle the touch of the screen
+         *The fuction save the first position the user touched with his finger
+         *The function then calculate the distance of the swipe using the starting and ending point of the touch
+         *Then the function do a update of the current scrolling point of the specific div (index)
+        */
+        if (!galleryRefTab[index].current) {
+            return;
+        }
+
+        if (!startX) {
+            return;
+        }
+
+        const x = event.touches[0].clientX;
+        const distance = startX - x;
+        galleryRefTab[index].current.scrollLeft = dataScrollLeft[index] + (distance*2);
+    };
+
+    const handleTouchEnd = (index) => {
+        /*This function handle the end of the user touch
+         *It first reset the StartX value to null
+         *Then the function update the Array of each div current slding point
+        */
+        setStartX(null);
+        setDataScrollLeft(prevdataScrollLeft => {
+            const newdataScrollLeft = [...prevdataScrollLeft];
+            newdataScrollLeft[index] = galleryRefTab[index].current.scrollLeft;
+            return newdataScrollLeft;
+        });
+    };
+
+    // Function that swipe a div to the right
     const scrollRight = (galleryRef) => {
         if (galleryRef.current) {
           galleryRef.current.scrollTo({
@@ -38,14 +84,16 @@ function MangasScreen ( {sendRef}) {
         }
       };
       
-      const scrollLeft = (galleryRef) => {
-        if (galleryRef.current) {
-          galleryRef.current.scrollTo({
-            left: galleryRef.current.scrollLeft - 500,
-            behavior: 'smooth'
-          });
-        }
-      };
+          // Function that swipe a div to the left
+    const scrollLeft = (galleryRef) => {
+    if (galleryRef.current) {
+        galleryRef.current.scrollTo({
+        left: galleryRef.current.scrollLeft - 500,
+        behavior: 'smooth'
+        });
+    }
+        };
+
 
 
 
@@ -64,19 +112,22 @@ function MangasScreen ( {sendRef}) {
                     </div>
                 </div>
 
+
                 <div className='mangasFromMaj'>
 
-                    {/* Utilisation de map pour générer des éléments pour chaque manga */}
+                    {/* Map to render all manga from MAJ */}
                     {newAllManga.map((manga, index) => (
                         <div key={index} className='mangaItem'>
-                        {/* Affichage des informations du manga */}
-                        <img src={manga.cover} alt={manga.title} />
-                        <div className='nameAndTitle'>
-                            <span className='mangaName'>{manga.title}</span>
-                            <span className='mangaAuthor'>{manga.author}</span>
-                        </div>
+                        {/* Rendering each Manga data */}
+                            <img src={manga.cover} alt={manga.title} />
+                            <div className='nameAndTitle'>
+                                <span className='mangaName'>{manga.title}</span>
+                                <span className='mangaAuthor'>{manga.author}</span>
+                            </div>
+
                             <div className='infoContainer'>
                                 <div className='fineBar'></div>
+
                                 <div className='summary'>
                                     <div className='chapterNumberAndViews'>
                                         <div className='chapterNumber'>{"#" + manga.chapterNumber}</div>
@@ -104,8 +155,8 @@ function MangasScreen ( {sendRef}) {
                                         
                                     }
                                 </div>
+
                             </div>
-                        {/* Ajoutez d'autres informations du manga selon vos besoins */}
                         </div>
                     ))}
 
@@ -118,20 +169,20 @@ function MangasScreen ( {sendRef}) {
                     WEEKLY SHONEN JUMP
                     </h1>
                     
-                    <div ref={galleryRef1} className='mangasFromWSJ'>
+                    <div ref={galleryRef1} className='mangasFromWSJ'
+                            onTouchStart={(event) => handleTouchStart(event, 0)}
+                            onTouchMove={(event) => handleTouchMove(event, 0)}
+                            onTouchEnd={() => handleTouchEnd(0)}>
 
-                    {WSJMangas.map((manga, index) => (
-                        <div key={index} className='mangaItemExceptMaj'>
-                        {/* Affichage des informations du manga */}
-                        <img src={manga.cover} alt={manga.title} />
+                        {WSJMangas.map((manga, index) => (
+                            <div key={index} className='mangaItemExceptMaj'>
+                            {/* Rendering Manga from WSJ */}
+                            <img src={manga.cover} alt={manga.title} />
 
-                        {/* Ajoutez d'autres informations du manga selon vos besoins */}
-                        </div>
-                    ))}
-
-
-
-                    </div>
+                            </div>
+                        ))}
+                        
+                   </div>
 
                     <div className='containerLeft' onClick={() => scrollLeft(galleryRef1)}>
                         <div className='arrow left' ></div>
@@ -140,7 +191,6 @@ function MangasScreen ( {sendRef}) {
                     <div className='containerRight' onClick={() => scrollRight(galleryRef1)}>
                         <div className='arrow right' ></div>
                     </div>
-
 
                 </div>
 
@@ -151,57 +201,61 @@ function MangasScreen ( {sendRef}) {
                     JUMP PLUS
                     </h1>
 
-                                    <div ref={galleryRef2} className='mangaFromJumpPlus'>
+                    <div ref={galleryRef2} className='mangaFromJumpPlus'
+                    onTouchStart={(event) => handleTouchStart(event, 1)}
+                    onTouchMove={(event) => handleTouchMove(event, 1)}
+                    onTouchEnd={() => handleTouchEnd(1)}>
 
-                                {jumpPlusMangas.map((manga, index) => (
-                                    <div key={index} className='mangaItemExceptMaj'>
-                                    {/* Affichage des informations du manga */}
-                                    <img src={manga.cover} alt={manga.title} />
+                        {jumpPlusMangas.map((manga, index) => (
+                            <div key={index} className='mangaItemExceptMaj'>
+                            {/* Rendering all Manga from JumpPlus */}
+                            <img src={manga.cover} alt={manga.title} />
 
-                                    {/* Ajoutez d'autres informations du manga selon vos besoins */}
-                                    </div>
-                                ))}
+                            </div>
+                        ))}
 
-                                    </div>
+                    </div>
 
-                                    <div className='containerLeft' onClick={() => scrollLeft(galleryRef2)}>
-                                    <div className='arrow left' ></div>
-                                    </div>
+                    <div className='containerLeft' onClick={() => scrollLeft(galleryRef2)}>
+                        <div className='arrow left' ></div>
+                    </div>
 
-                                    <div className='containerRight' onClick={() => scrollRight(galleryRef2)}>
-                                    <div className='arrow right' ></div>
-                                    </div>
+                    <div className='containerRight' onClick={() => scrollRight(galleryRef2)}>
+                        <div className='arrow right' ></div>
+                    </div>
 
                 </div>
 
                 
                 <div  className='othersCategory'>
+
                     <h1 className='categoryitle others'>
                     OTHERS
                     </h1>
 
-                    <div ref={galleryRef3} className='mangaFromOthers'>
+                    <div ref={galleryRef3} className='mangaFromOthers'
+                    onTouchStart={(event) => handleTouchStart(event, 2)}
+                    onTouchMove={(event) => handleTouchMove(event, 2)}
+                    onTouchEnd={() => handleTouchEnd(2)}>
 
                         {othersMangas.map((manga, index) => (
                             <div key={index} className='mangaItemExceptMaj'>
-                            {/* Affichage des informations du manga */}
+                            {/* Rendering of all manga from Others */}
                             <img src={manga.cover} alt={manga.title} />
 
-                            {/* Ajoutez d'autres informations du manga selon vos besoins */}
                             </div>
                         ))}
 
                     </div>
 
                     <div className='containerLeft' onClick={() => scrollLeft(galleryRef3)}>
-                    <div className='arrow left' ></div>
+                        <div className='arrow left' ></div>
                     </div>
 
                     <div className='containerRight' onClick={() => scrollRight(galleryRef3)}>
-                    <div className='arrow right' ></div>
+                        <div className='arrow right' ></div>
                     </div>
-
-                    
+         
                 </div>
 
 
@@ -211,26 +265,27 @@ function MangasScreen ( {sendRef}) {
                     "First Read Free" Eligible Titles!
                     </h1>
 
-                    <div ref={galleryRef4} className='mangaFromFirstRead'>
+                    <div ref={galleryRef4} className='mangaFromFirstRead'
+                    onTouchStart={(event) => handleTouchStart(event, 3)}
+                    onTouchMove={(event) => handleTouchMove(event, 3)}
+                    onTouchEnd={() => handleTouchEnd(3)}>
 
                         {freeReadMangas.map((manga, index) => (
                                 <div key={index} className='mangaItemExceptMaj'>
-                                {/* Affichage des informations du manga */}
+                                {/* Rendering all mangas from freeRead */}
                                 <img src={manga.cover} alt={manga.title} />
-
-                                {/* Ajoutez d'autres informations du manga selon vos besoins */}
                                 </div>
                             ))}
 
                     </div>     
 
-                                        <div className='containerLeft' onClick={() => scrollLeft(galleryRef4)}>
-                                        <div className='arrow left' ></div>
-                                        </div>
+                    <div className='containerLeft' onClick={() => scrollLeft(galleryRef4)}>
+                        <div className='arrow left' ></div>
+                    </div>
 
                     <div className='containerRight' onClick={() => scrollRight(galleryRef4)}>
-                    <div className='arrow right' ></div>
-                                        </div>
+                        <div className='arrow right' ></div>
+                    </div>
                
                 </div>
 

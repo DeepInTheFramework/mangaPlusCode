@@ -199,18 +199,36 @@
 
     @media screen and (max-width:1024px) {
         .showMoreButton button {
-                padding: 60px;
+                padding: 40px;
                 padding-top: 15px;
                 padding-bottom: 15px;
-            
+                font-size: 12px;
             }
 
         .showMoreButton button:hover {
 
-                    padding-left: 70px;
-                padding-right: 70px;
+                    padding-left: 55px;
+                padding-right: 55px;
         
         }
+
+        .popularity {
+            font-size: 14px;
+            gap: 5px;
+        }
+
+        .popularity img {
+            height: 22px;
+        }
+
+        .hightlightHeader {
+            height: 60px;
+        }
+
+        .hightlightHeader .allMajButton {
+                font-size: 12px;
+        }
+    
     }
 
     @media screen and (max-width:800px) {

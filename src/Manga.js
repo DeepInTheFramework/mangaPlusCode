@@ -29,70 +29,74 @@ import seraph from './img/mangaCover/seraph.jpg'
 
 
 
+const allMangas = []; //Contain all object
+let WSJMangas = [];   //Contain the objects supposed to be shown in the first category
+let jumpPlusMangas = []; //Contain the objects supposed to be shown in the second category
+let othersMangas = [];  //Contain the objects supposed to be shown in the third category
+let freeReadMangas = []; //Contain the objects supposed to be shown in the fourth category
 
 
+    /**
+     * This component is a constructor.
+     * It contain all the data about the structure of the Manga object that will be shown everywhere on the website.
+     * It also, as a constructor, contain various function allowing to get different that about the manga
+     */
 
+    export function Manga(cover, title, author, chapterNumber, lastChapterTitle, french, english) {
 
-const allMangas = [];
-let WSJMangas = [];
-let jumpPlusMangas = [];
-let othersMangas = [];
-let freeReadMangas = [];
+        this.cover = cover;
+        this.title = title;
+        this.author = author;
+        this.chapterNumber = chapterNumber;
 
-
-
- export function Manga(cover, title, author, chapterNumber, lastChapterTitle, french, english) {
-
-    this.cover = cover;
-    this.title = title;
-    this.author = author;
-    this.chapterNumber = chapterNumber;
-    this.views = () => {
-        return Math.ceil(Math.random()*999999) //Compteur de vue généré aléatoirement
-    }
-    this.lastChapterTitle = lastChapterTitle;
-    this.french = french;
-    this.english = english;
-    allMangas.push(this);
-}
-
-
-export function arrayRandomize() {
-
-        // Fonction de comparaison aléatoire
-        function compareRandom(a, b) {
-          return Math.random() - 0.5;
+        this.views = () => {
+            return Math.ceil(Math.random()*999999) //Views count randomly generated
         }
-      
-        // Utilisation de la méthode sort() avec la fonction de comparaison aléatoire
-        return allMangas.sort(compareRandom);
 
-}
+        this.lastChapterTitle = lastChapterTitle;
+        this.french = french;
+        this.english = english;
+        allMangas.push(this);
+
+    }
 
 
-function FindAllCategory () 
-{
-    getWSJ();
-}
+    export function arrayRandomize() {
+            //Function that randomize the item in the array
+
+            function compareRandom(a, b) {
+            return Math.random() - 0.5;
+            }
+        
+            // We use the function to sort all Mangas in a array
+            return allMangas.sort(compareRandom);
+
+    }
+
 
     export function getWSJ() {
+        //Function that randomly select 20 mangas and store them in the WSJ Array
         let numberAlreadyUsed = [];
-     do {
-       const random = Math.floor(Math.random()*allMangas.length) //Compteur de vue généré aléatoirement
-       const selectedManga = allMangas[random];
-       if (!numberAlreadyUsed.includes(random))
+
+        do {
+        const random = Math.floor(Math.random()*allMangas.length) //Randomize number of views
+        const selectedManga = allMangas[random];
+        if (!numberAlreadyUsed.includes(random))
         {
             WSJMangas.push(selectedManga)
             numberAlreadyUsed.push(random)
         }
-     }
-    while (WSJMangas.length < 20)
-}
+        }
+
+        while (WSJMangas.length < 20)
+    }
 
 export function getJumpPlus() {
+
+    //Function that randomly select 20 mangas and store them in the JumpPlus Array
     let numberAlreadyUsed = [];
     do {
-      const random = Math.floor(Math.random()*allMangas.length) //Compteur de vue généré aléatoirement
+      const random = Math.floor(Math.random()*allMangas.length) //Randomize number of views
       const selectedManga = allMangas[random];
       if (!numberAlreadyUsed.includes(random))
        {
@@ -101,12 +105,15 @@ export function getJumpPlus() {
        }
     }
    while (jumpPlusMangas.length < 20)
+
 }
 
 export function getOthers() {
+
+    //Function that randomly select 20 mangas and store them in the Others Array
     let numberAlreadyUsed = [];
     do {
-      const random = Math.floor(Math.random()*allMangas.length) //Compteur de vue généré aléatoirement
+      const random = Math.floor(Math.random()*allMangas.length) //Randomize number of views
       const selectedManga = allMangas[random];
       if (!numberAlreadyUsed.includes(random))
        {
@@ -115,12 +122,14 @@ export function getOthers() {
        }
     }
    while (othersMangas.length < 20)
+
 }
 
 export function getFreeRead() {
+        //Function that randomly select 20 mangas and store them in the freeRead Array
     let numberAlreadyUsed = [];
     do {
-      const random = Math.floor(Math.random()*allMangas.length) //Compteur de vue généré aléatoirement
+      const random = Math.floor(Math.random()*allMangas.length) //Randomize number of views
       const selectedManga = allMangas[random];
       if (!numberAlreadyUsed.includes(random))
        {
@@ -129,8 +138,11 @@ export function getFreeRead() {
        }
     }
    while (freeReadMangas.length < 20)
+    
 }
 
+
+//Just adding some manga and their data
 new Manga (opCover, 'One Piece', 'EIICHIRO ODA', 1108, 'Chapitre 1008: Allô le monde, vous m\'entendez ?', true, true)
 new Manga (blCover, 'Blooming Love', 'DAICHI KAWADA', '024', 'Chapter 24', false, true)
 new Manga (jinruiCover, 'Jinrui-Shoku: Blight of Man', 'MITSUCHIYOMARU / YUKI SATO', '021', 'Chapitre 21: Sneak Attack', false, true)

@@ -5,61 +5,55 @@ import flamme_icon from './img/flamme.svg'
 
 
 
+/**
+ * The MangaHighlights component render a top 10 Manga of the list at the right of the screen
+ */
 
 function MangaHighlights () {
 
-        const newAllManga = allMangas.slice(0, 10);
-
-
+        const newAllManga = allMangas.slice(0, 10); // Get the first ten Manga of the list
         return (
 
         <div className='hightlightContainer'>
 
 
             <div className='hightlightHeader'>
-                
-            <div className='highlighttitle'>
-
-             <span className='popularity'><img src={flamme_icon}/>Populaires</span>
-
-            </div>
-
-                <div className='allMajButton'>
-                                <span>Afficher tout {'>'}</span>
+                <div className='highlighttitle'>
+                    <span className='popularity'><img src={flamme_icon}/>Populaires</span>
                 </div>
 
+                <div className='allMajButton'>
+                    <span>Afficher tout {'>'}</span>
+                </div>
             </div>
 
-        <div className='highlightList'>
 
-        {newAllManga.map((manga, index) => (
-                        <div key={index} className='mangaItem'>
-                        {/* Affichage des informations du manga */}
-                                <div className='coverAndNumber'>
-                                <div className='mangaNumber'>{index+1}</div>        
-                                <img className='mangaCover' src={manga.cover} alt={manga.title} />      
+            <div className='highlightList'>
+
+                {newAllManga.map((manga, index) => (
+                                <div key={index} className='mangaItem'>
+                                {/* Render different details of the Manga*/}
+                                    <div className='coverAndNumber'>
+                                    <div className='mangaNumber'>{index+1}</div>        
+                                    <img className='mangaCover' src={manga.cover} alt={manga.title} />      
+                                    </div>
+
+
+                                    <div className='highlightSummary'>
+                                    <span className='mangaName'>{manga.title}</span>
+                                    <span className='mangaAuthor'>{manga.author}</span>
+                                    <span className='mangaViews' style ={{color :'white'}}><img src={flamme_icon}/>{manga.views().toString()}</span>
+                                    </div>
+                                {/* Ajoutez d'autres informations du manga selon vos besoins */}
                                 </div>
+                            ))}
+
+            </div>
 
 
-                                <div className='highlightSummary'>
-                                <span className='mangaName'>{manga.title}</span>
-                                <span className='mangaAuthor'>{manga.author}</span>
-                                <span className='mangaViews' style ={{color :'white'}}><img src={flamme_icon}/>{manga.views().toString()}</span>
-                                </div>
-
-
-
-
-                        {/* Ajoutez d'autres informations du manga selon vos besoins */}
-                        </div>
-                    ))}
-
-        </div>
-
-
-        <div className='showMoreButton'>
-                        <button>AFFICHER TOUT {'>'}</button>
-        </div>
+            <div className='showMoreButton'>
+                <button>AFFICHER TOUT {'>'}</button>
+            </div>
 
         </div>
         );

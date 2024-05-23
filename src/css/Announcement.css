@@ -47,7 +47,7 @@
 
 .realButton {
     height: 12px;
-    background-color: yellow;
+    background-color: grey;
     border-radius: 50px;
     cursor: pointer;
     transition: width 0.3s, border-radius 0.3s; /* Ajout de la transition */
@@ -59,6 +59,7 @@
 
 .activated {
     width: 25px;
+    background-color: yellow;
 }
 
 @media screen and (max-width:1919px) {

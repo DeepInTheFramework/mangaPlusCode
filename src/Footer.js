@@ -7,6 +7,9 @@ import iconApple from './img/appleStore.svg';
 import iconGoogle from './img/googleApp.png';
 
 
+/**
+ * The Footer component is rendering the footer of the app depending of the viewport width
+ */
 
 export default function Footer ({scrollToTarget}) {
 
@@ -23,18 +26,21 @@ export default function Footer ({scrollToTarget}) {
                         </div>
                     </div>
 
+
                     <div className='footerMenuContainer'>
-                    <ul className='footerList' style={{ listStyleType: 'none' }}>
-                            <li className='aide'>Aide / FAQ</li>
-                            <li className='actualites'>Actualités et Événements</li>
-                            <li className='politique'>Politique de Confidentialité</li>
-                            <li className='conditions'>Conditions d'Utilisation</li>
-                            <li className='evaluations'>Évaluations</li>
-                            <li className='copyright'>Copyright</li>
+
+                        <ul className='footerList' style={{ listStyleType: 'none' }}>
+                                <li className='aide'>Aide / FAQ</li>
+                                <li className='actualites'>Actualités et Événements</li>
+                                <li className='politique'>Politique de Confidentialité</li>
+                                <li className='conditions'>Conditions d'Utilisation</li>
+                                <li className='evaluations'>Évaluations</li>
+                                <li className='copyright'>Copyright</li>
                         </ul>
+
                         <div className='abj'>
                             <img src={abjlogo} />
-                                <p className='abjText'>ABJ Mark est une marque déposée (numéro d'enregistrement 10921042) <br/>
+                            <p className='abjText'>ABJ Mark est une marque déposée (numéro d'enregistrement 10921042) <br/>
     Ce qui indique que cette boutique de livres électroniques / service de distribution de livres électroniques est un service de distribution autorisé qui a obtenu l'autorisation d'utiliser le contenu du détenteur des droits d'auteur.
     <br/> Pour plus d'informations, consultez <a href="https://aebs.or.jp/">https://aebs.or.jp/</a>.</p></div>
                         </div>

@@ -101,3 +101,14 @@
     opacity: 1;
     background-size: 18%;
 }
+
+@media screen and (max-width:1024px) {
+    .socialsContainer {
+        height: 42px;
+    }    
+
+    .socialsContainer div {
+        font-size: 13px;
+        height: 36px;
+    }
+}
