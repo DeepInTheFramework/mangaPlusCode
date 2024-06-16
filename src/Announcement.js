@@ -5,6 +5,7 @@ import slide2 from './img/announcement/a2.jpg';
 import slide3 from './img/announcement/a3.jpg';
 import slide4 from './img/announcement/a4.jpg';
 import slide5 from './img/announcement/a5.jpg';
+import useDebouncedResize from './hooks/useDebouncedResize';
 
 
 /**
@@ -25,15 +26,24 @@ function Annoucement () {
     const [slide5ActivatedStatus, setSlide5ActivatedStatus] = useState(false)
 
     const [currentSlideSens, setCurrentSlideSens] = useState('right') //Define the sliding direction used at the moment
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth) //Keep track of the size of the window
+    const windowWidth = useDebouncedResize(100)
+    
+  //  const [windowWidth, setWindowWidth] = useState(window.innerWidth) //Keep track of the size of the window
     const [hoverSlide, setHoverSlide] = useState(false) //Used to know if the slide is hovered, so the automatic sliding could be stop.
 
-    const handleResize = () => {
+   /* const handleResize = () => {
+      console.log("Je resize, ", window.innerWidth)
       setWindowWidth(window.innerWidth);
-    };
+    }; 
   
     window.addEventListener('resize', handleResize);
     
+
+
+
+
+
+
     /*
     useEffect (() => {
         if (hoverSlide) {console.log("hovering")}

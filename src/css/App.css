@@ -101,14 +101,14 @@ body {
 
 .headerOfMobileMenu {
   position: relative;
-  height: 12vh;
+  height: 12dvh;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.92), rgb(141, 16, 16));
 }
 
 .menu-mobile-language {
   display: flex;
   width: 100vw;
-  height: 12vh;
+  height: 12dvh;
   align-items: center;
 }
 
@@ -117,7 +117,7 @@ body {
   display: flex;
   position: relative;
   width: 67vw;
-  height: 12vh;
+  height: 12dvh;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.92), rgb(141, 16, 16)); /* Dégradé de noir à rouge */
   color: rgb(228, 228, 228);
   align-items: center;
@@ -132,7 +132,7 @@ body {
 
 .menu-mobile-language-right-part {
   width: 33vw;
-  height: 12vh;
+  height: 12dvh;
   display: flex;
   color: aliceblue;
   align-items: center;
@@ -195,7 +195,7 @@ body {
 }
 
 .menuListOnMobile {
-  height: 45vh;
+  height: 45dvh;
   font-family: 'Roboto', sans-serif; 
   color: rgb(223, 223, 223);
   font-size: 13.8px;
@@ -229,7 +229,7 @@ body {
   margin: 0;
   background-color: rgba(0, 0, 0, 0.94);
   word-wrap: break-word;
-  height: 42vh;
+  height: 42dvh;
 }
 
 .footerInMobileMenu .footerListOnMobile {
@@ -242,7 +242,7 @@ body {
   padding: 0;
   font-size: 13px;
   margin: 0;
-  height: 38vh;
+  height: 38dvh;
   align-content: flex-start;
 
 }
@@ -554,7 +554,7 @@ body {
   position: fixed;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   z-index: 99;
   justify-content: flex-end;
